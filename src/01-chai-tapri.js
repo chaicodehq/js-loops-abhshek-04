@@ -28,4 +28,21 @@
  */
 export function chaiTapriRevenue(customers) {
   // Your code here
+   if (!Number.isInteger(customers) || customers <= 0) {
+    return { totalChai: 0, totalRevenue: 0 };
+  }
+
+  // Count adrak chai (every 3rd customer)
+  let adrakCount = Math.floor(customers / 3);
+
+  // Remaining are cutting chai
+  let cuttingCount = customers - adrakCount;
+
+  // Calculate revenue
+  let totalRevenue = (cuttingCount * 10) + (adrakCount * 15);
+
+  return {
+    totalChai: customers,
+    totalRevenue: totalRevenue
+  };
 }
